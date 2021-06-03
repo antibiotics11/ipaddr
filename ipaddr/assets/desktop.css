@@ -2,34 +2,35 @@ body {
 	font-family: 'Nanum Gothic';
 }
 
+/* head */
+
 #head {
 	margin-left: 10%;
 }
 
-.a_title {
+#head h1 a {
 	text-decoration: none;
 	color: #2e4053; 
 	font-size: 1.4em;
 }
 
-.menu {
+#head .menu {
 	display: inline;
 	margin-right: 1%;
 	position: static;
-}
-.a_menu {
-	position: static;
-	text-decoration: none;
 	color: black;
-	font-size: 0.74em;
+	font-size: 110%;
 	font-weight: lighter;
+	cursor: pointer;
 }
 
-.a_menu:hover {
+#head .menu:hover {
 	color: #aeb6bf;
 	position: relative;
 	top: 1px;
 }
+
+/* contents */
 
 #contents {
 	text-align: center;
@@ -42,39 +43,32 @@ body {
 	padding-bottom: 3%;
 }
 
-.contents_ip {
+#contents #main .title {
+	font-size: 2em;
+}
+
+#contents #main .ip {
 	font-size: 2.6em;
 	text-decoration: none;
 	color: #424949; 
+	cursor: pointer;
 }
 
-.contents_ip:hover {
+#contents #main .ip:hover {
 	position: relative;
 	top: 1px;
 }
 
-.contents_title {
-	font-size: 2em;
-}
-
-.contents_isp {
+#contents #main .isp {
 	font-size: 1.4em;
 }
 
-.info {
+#contents #info, #contents #notice {
 	text-align: left;
 	margin: 2% 2% 2% 2%;
 }
 
-.a_contents {
-	text-decoration: none;
-	color: #2e4053;
-}
-
-.a_contents:hover {
-	position: relative;
-	top: 1px;
-}
+/* footer */
 
 #footer {
 	position: fixed;
@@ -83,8 +77,5 @@ body {
 	text-align: center;
 	font-size: 1.3em;
 	color: #585858;
-}
-
-#footer:hover {
 	cursor: default;
 }

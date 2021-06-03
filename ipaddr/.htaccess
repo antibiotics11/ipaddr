@@ -1,0 +1,13 @@
+<IfModule dir_module>
+	DirectoryIndex index.php
+</IfModule>
+ 
+<IfModule mod_rewrite.c>
+	RewriteEngine on
+
+	#RewriteCond %{THE_REQUEST} ^GET.*index\.php [NC]
+	#RewriteRule (.*?)index\.php/*(.*) /$1$2 [R=301,NE,L]
+
+	ErrorDocument 403 /?error=403
+	ErrorDocument 404 /?error=404
+</IfModule>
