@@ -6,8 +6,10 @@
 		include_once "./assets/en.php";
 	}
 	if (preg_match('/(iphone|Android)/i', $_SERVER['HTTP_USER_AGENT'])) {
+		$m_check = True;
 		$stylesheet_name = "mobile.css";
 	} else {
+		$m_check = False;
 		$stylesheet_name = "desktop.css";
 	}
 ?>
@@ -34,7 +36,7 @@
 			document.location.href = document.location.href.replace('http:', 'https:');
 		}
 		function view_pages(value) {
-			var menu_list = ['main', 'info', 'notice'];
+			var menu_list = ['main', 'notice'];
 			for (var i = 0; i < menu_list.length; i++) {
 				if (menu_list[i] == value) {
 					document.getElementById(value).style.display = "block";
@@ -60,14 +62,20 @@
 		<h1> <a href = "https://<?=$_SERVER['SERVER_NAME']?>"> <?=$_SERVER['SERVER_NAME']?> </a> </h1>
 		<div id = "menu">
 			<div class = "menu" onclick="view_pages('main')"> <?=$menu1?> </div>
-			<!-- <div class = "menu" onclick="view_pages('info')"> <?=$menu2?> </div> -->
+			<?php if (!$m_check) { ?>
 			<div class = "menu" onclick="location.href='https://ping-busan.<?=$_SERVER['SERVER_NAME']?>'"> <?=$menu3?> </div>
+			<?php } ?>
 			<div class = "menu" onclick="location.href='http://v6.<?=$_SERVER['SERVER_NAME']?>'"> <?=$menu4?> </div>
 			<div class = "menu" onclick="view_pages('notice')"> <?=$menu5?> </div>
 		</div>
 	</div>
 	
 	<div id = "contents">
+	<?php
+		if (isset($_GET['error'])) {
+			require_once "./errors/".$_GET['error']."html";
+		} else {
+	?>
 		<div id = "main">
 			<?php
 				$client_ip = $_SERVER['REMOTE_ADDR'];
@@ -84,17 +92,6 @@
 			<br>
 		</div>
 		
-		<div id = "info" style = "display: none;">
-			<p>IP 주소(IP Address)는 네트워크상의 장치를 식별하기 위한 번호입니다.</p>
-			<p>IP 주소는 인터넷에서 사용되는 '공인IP(Public IP)'와 사설망에서 사용되는 '사설IP(Private IP)'로 구분되며, 표현 방식에 따라 32비트 체계의 ipv4와 128비트 체계의 ipv6로 나뉩니다. </p>
-			<p> 한국은 아시아태평양인터넷정보센터 APNIC에서 IP주소를 할당받습니다. </p>
-			<p> APNIC로부터 할당받은 한국 IP주소는 한국인터넷정보센터 KRNIC를 통해 국내 ISP (KT, SKB, U+ 등의 통신서비스 제공사업자)로 분배되며, 국내 ISP는 분배받은 IP주소를 개인 고객에게 제공합니다. </p>
-			<p>이 사이트는 접속한 디바이스의 공인IP 주소와 ISP 정보를 출력해줍니다. </p>
-			<a class = "a_contents" target = "_blank" href = "https://www.apnic.net/">> APNIC 바로가기</a><br><br>
-			<a class = "a_contents" target = "_blank" href = "https://krnic.or.kr/">> KRNIC 바로가기</a><br><br>
-			<a class = "a_contents" target = "_blank" href = "http://www.ktword.co.kr/abbr_view.php?nav=&m_temp1=194&id=424">> IP Address (정보통신기술용어해설)</a>
-		</div>
-		
 		<div id = "notice" style = "display: none;">
 			<p> ipaddr.online은 학생 개발자가 학습 목적으로 제작한 사이트입니다. </p>
 			<p> 사이트 및 서버 정보는 아래와 같습니다. </p>
@@ -104,9 +101,10 @@
 			<li>업데이트 날짜:   2021/06/03 </li>
 			</ul>
 			<br>
-			<a class = "a_contents" target = "_blank" href = "https://blog.abxattic.com/PHP">> 블로그 방문 </a><br><br>
-			<a class = "a_contents" href = "https://ipaddr.online/ipaddr.apk">> 안드로이드 앱 다운로드 (apk 파일) </a>
+			<a target = "_blank" href = "https://github.com/antibiotics11">> GitHub </a><br><br>
+			<a href = "https://ipaddr.online/ipaddr.apk">> 안드로이드 앱 다운로드 (apk 파일) </a>
 		</div>
+	<? } ?>
 	</div>
 	
 	<div id = "footer">
