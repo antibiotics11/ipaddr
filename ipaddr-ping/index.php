@@ -23,7 +23,7 @@
 				<a class = "a_menu" href = "https://ipaddr.online"> <?=$menu1?> </a>
 			</div>
 			<div class = "menu">
-				<a class = "a_menu" href = "https://ping-busan.ipaddr.online"> <?=$menu2?> </a>
+				<a class = "a_menu" href = "https://ping-seoul.ipaddr.online"> <?=$menu2?> </a>
 			</div>
 		</h2>
 	</div>
